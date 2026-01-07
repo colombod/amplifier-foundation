@@ -61,7 +61,7 @@ class SimpleSessionPersistence:
         if not self.storage_path.exists():
             return False
 
-        with open(self.storage_path) as f:
+        with open(self.storage_path, encoding='utf-8') as f:
             state = json.load(f)
 
         self.metadata = state.get("metadata", {})
@@ -208,7 +208,7 @@ async def inspect_state(session_id: str = "demo-workflow"):
         print(f"❌ No saved state found: {state_file}")
         return
 
-    with open(state_file) as f:
+    with open(state_file, encoding='utf-8') as f:
         state = json.load(f)
 
     print("\n" + "=" * 60)

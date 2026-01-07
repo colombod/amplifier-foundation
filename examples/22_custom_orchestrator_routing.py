@@ -129,7 +129,7 @@ async def main():
         Task(
             id="refactor",
             prompt="Refactor this snippet for clarity and add type hints:\n```python\n"
-            "def load_cfg(p):\n    import json\n    return json.loads(open(p).read())\n```",
+            "def load_cfg(p):\n    import json\n    return json.loads(open(p, encoding='utf-8').read())\n```",
             kind="code",
             importance="medium",
             prefer_mini_first=True,

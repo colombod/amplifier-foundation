@@ -89,7 +89,7 @@ def discover_providers(bundle: Bundle) -> list[dict[str, Any]]:
     for provider_file in sorted(providers_dir.glob("*.yaml")):
         import yaml
 
-        with open(provider_file) as f:
+        with open(provider_file, encoding='utf-8') as f:
             data = yaml.safe_load(f)
 
         bundle_info = data.get("bundle", {})

@@ -593,7 +593,8 @@ class PreparedBundle:
             # Load and append all context files (re-read each call)
             for context_name, context_path in captured_bundle.context.items():
                 if context_path.exists():
-                    content = context_path.read_text()
+                    # CRITICAL: Always specify encoding for cross-platform compatibility (e.g., Windows cp1252)
+                    content = context_path.read_text(encoding='utf-8')
                     instruction_parts.append(f"# Context: {context_name}\n\n{content}")
 
             combined_instruction = "\n\n---\n\n".join(instruction_parts)
