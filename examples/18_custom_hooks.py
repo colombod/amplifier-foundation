@@ -220,7 +220,7 @@ class AuditLogger:
 
         # Write to file if specified
         if self.log_file:
-            with open(self.log_file, "a") as f:
+            with open(self.log_file, "a", encoding="utf-8") as f:
                 f.write(json.dumps(entry) + "\n")
 
         return HookResult(action="continue")

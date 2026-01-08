@@ -69,7 +69,7 @@ def post_pr_comment(comment: str):
     """
     if is_github_actions():
         # Write to file that workflow can pick up
-        with open("pr_comment.txt", "w") as f:
+        with open("pr_comment.txt", "w", encoding="utf-8") as f:
             f.write(comment)
         print("::notice::PR comment written to pr_comment.txt")
     else:
@@ -294,7 +294,7 @@ Make it clear, concise, and user-focused."""
         notes = await session.execute(prompt)
 
         # Save to file for release
-        with open("RELEASE_NOTES.md", "w") as f:
+        with open("RELEASE_NOTES.md", "w", encoding="utf-8") as f:
             f.write(f"# Release Notes\n\n{notes}\n")
 
         print("\n✅ Release notes generated")
@@ -457,7 +457,7 @@ jobs:
 
     # Save to file
     output_file = "github_actions_workflow.yml"
-    with open(output_file, "w") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         f.write(yaml_content)
 
     print(f"\n💾 Workflow saved to: {output_file}")

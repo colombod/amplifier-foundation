@@ -49,7 +49,7 @@ class SimpleSessionPersistence:
         """Save session state to disk."""
         state = {"metadata": self.metadata, "messages": self.messages, "saved_at": datetime.now().isoformat()}
 
-        with open(self.storage_path, "w") as f:
+        with open(self.storage_path, "w", encoding="utf-8") as f:
             json.dump(state, f, indent=2)
 
     def load(self) -> bool:

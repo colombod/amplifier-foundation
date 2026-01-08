@@ -152,7 +152,7 @@ class EventLogger:
 
     def save_to_file(self, filename: str):
         """Save events to JSON file."""
-        with open(filename, "w") as f:
+        with open(filename, "w", encoding="utf-8") as f:
             json.dump(self.events, f, indent=2)
         print(f"\n💾 Saved {len(self.events)} events to {filename}")
 
